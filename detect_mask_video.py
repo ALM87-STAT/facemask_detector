@@ -74,12 +74,12 @@ def detect_and_predict_mask(frame, faceNet, maskNet):
 
 
 # load our serialized face detector model from disk
-prototxtPath = "/home/ignacio.baldriz/Desktop/ignacio_baldriz/face_mask_detection_2/Face-Mask-Detection_2/face_detector/deploy.prototxt"
-weightsPath = "/home/ignacio.baldriz/Desktop/ignacio_baldriz/face_mask_detection_2/Face-Mask-Detection_2/face_detector/res10_300x300_ssd_iter_140000.caffemodel"
+prototxtPath = "C:/Users/usuario/Documents/GitHub/facemask_detector/face_detector/deploy.prototxt"
+weightsPath = "C:/Users/usuario/Documents/GitHub/facemask_detector/face_detector/res10_300x300_ssd_iter_140000.caffemodel"
 faceNet = cv2.dnn.readNet(prototxtPath, weightsPath)
 
 # load the face mask detector model from disk
-maskNet = load_model("/home/ignacio.baldriz/Desktop/ignacio_baldriz/face_mask_detection_2/Face-Mask-Detection_2/mask_recognizer.h5")
+maskNet = load_model("C:/Users/usuario/Documents/GitHub/facemask_detector/mask_recognizer.h5")
 
 # initialize the video stream
 print("[INFO] starting video stream...")
@@ -105,8 +105,8 @@ while True:
 
 		# determine the class label and color we'll use to draw
 		# the bounding box and text
-		label = "Mask" if mask > withoutMask else "No Mask"
-		color = (0, 255, 0) if label == "Mask" else (0, 0, 255)
+		label = "Con tapabocas" if mask > withoutMask else "Sin tapabocas"
+		color = (0, 255, 0) if label == "Con tapabocas" else (0, 0, 255)
 
 		# include the probability in the label
 		label = "{}: {:.2f}%".format(label, max(mask, withoutMask) * 100)
